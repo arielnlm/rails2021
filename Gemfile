@@ -14,6 +14,10 @@ group :development, :test do
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]  #Debagovanje
 end
 
+group :production do
+  gem 'pg', '1.2.3'
+end
+
 group :development do
   gem 'web-console',           '4.0.2' 
   gem 'listen',                '3.2.1' #Koristi se za Spring
