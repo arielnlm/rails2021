@@ -16,9 +16,10 @@ gem 'ratyrate'
 gem 'paperclip',   '4.2.1'
 gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'pg', '1.2.3'
 
 group :development, :test do
-  gem 'sqlite3', '1.4.2'   #Mala baza za interni razvoj
+ # gem 'sqlite3', '1.4.2'   #Mala baza za interni razvoj
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]  #Debagovanje
 end
 
