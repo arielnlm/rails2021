@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1> <%= @book.name %> </h1>
+  <h3>Author: <%= @book.author.name%> <%= @book.author.lastname%> </h3>
+  <h4>Publishing house: <%= @book.publishing_house.name %></h4>
+  <h4>Summary:</h4>
+  <%= @book.description %>
+  
+  <% if is_admin? %>
+  <br>
+    <%= link_to 'Edit', edit_book_path(@book) %> |
+    <%= link_to 'Back', books_path %>
+  <% end %>
+  
+  <h4>Reviews: <% if logged_in? %>
+    <%= link_to 'Add rewiev', new_book_review_path(@book) %>
+    <% end %>
+  </h4>
+  <%= render @book.reviews %>
+</p>
+
+
+
+<script>
+	$('review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>

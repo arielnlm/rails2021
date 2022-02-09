@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bookstores <% if is_admin? %> <%= link_to "[Inventory]", bookstore_inventories_path %> <% end %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookstores.each do |bookstore| %>
+      <tr>
+        <td><%= link_to bookstore.name, bookstore %></td>
+        <% if is_admin? %> 
+          <td><%= link_to 'Show', bookstore %></td>
+          <td><%= link_to 'Edit', edit_bookstore_path(bookstore) %></td>
+          <td><%= link_to 'Destroy', bookstore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if is_admin? %> 
+  <%= link_to 'New Bookstore', new_bookstore_path %>
+<% end %>

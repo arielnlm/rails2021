@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @bookstore.name %>
+</h1>
+<h3>
+  <strong>Location:</strong> <%= Location.find(@bookstore.location_id).street %> <%= Location.find(@bookstore.location_id).city %> <%= Location.find(@bookstore.location_id).country %>
+</h3>
+<h3>
+  <strong>Events:</strong><br>
+  <% @bookstore.events.each do |e| %>
+    <%= link_to e.name, e %>
+  <% end %>
+   <br><br>
+  <strong>Books:</strong>
+</h3>
+  <p>
+    <% @bookstore.books.each do |b| %> 
+      <div><%= link_to b.name, b%> $<%= BookstoreInventory.find_by(bookstore_id: @bookstore.id, book_id: b.id).price %>
+         <%= link_to "Buy", new_purchase_path(user_id: current_user.id, book_id: b.id, bookstore_id: @bookstore.id, price: BookstoreInventory.find_by(bookstore_id: @bookstore.id, book_id: b.id).price) %>
+       
+     </div>
+    <% end %>
+  </p>
+<% if is_admin? %> 
+  <%= link_to 'Edit', edit_bookstore_path(@bookstore) %> |
+  <%= link_to 'Back', bookstores_path %>
+<% end %> 

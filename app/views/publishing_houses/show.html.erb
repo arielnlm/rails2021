@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @publishing_house.name %>
+</h1>
+<h3>
+  <strong>Location:</strong> <%= Location.find(@publishing_house.location_id).street %> <%= Location.find(@publishing_house.location_id).city %> <%= Location.find(@publishing_house.location_id).country %>
+</h3>
+<h3>
+  <strong>Books:</strong>
+  <% @publishing_house.books.each do |b| %>
+    <h4><%= link_to b.name, b %></h4>
+  <% end %>
+</h3>
+<% if is_admin? %>
+  <%= link_to 'Edit', edit_publishing_house_path(@publishing_house) %> |
+  <%= link_to 'Back', publishing_houses_path %>
+<% end %>

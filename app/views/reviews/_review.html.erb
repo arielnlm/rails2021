@@ -1,0 +1,42 @@
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--
+Author : Maniruzzaman Akash
+Email  : manirujjamanakash@gmail.com
+-->
+
+<!--To Work with icons-->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<div class="container">
+	
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+        	    <div class="col-md-2">
+        	        <%= gravatar_for User.find(review.user_id) %><br>
+        	        <img class="img img-rounded img-fluid"/> 
+        	        <p class="text-secondary text-center"><%= ((Time.now - review.updated_at)/3600).round(0) %> hours ago</p>
+        	    </div>
+        	    <div class="col-md-10">
+        	        <p>
+        	            <a class="float-left"><strong><%= link_to review.user.username, review.user %></strong></a>
+        	            <% review.rating.times do %>
+        	              <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                      <% end %>
+
+        	       </p>
+        	       <div class="clearfix"></div>
+        	        <p><%= review.comment %></p>
+        	    </div>
+	    </div>
+	    <% if logged_in? %>
+        <% if review.user_id == current_user.id %>
+          <%= link_to "Edit", edit_book_review_path(review.book, review) %>
+          <%= link_to "Delete", book_review_path(review.book, review), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      <% end %> 
+	</div>

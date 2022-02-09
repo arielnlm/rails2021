@@ -1,0 +1,21 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+    <h4><strong>Purchase history</strong></h4>
+  <p>
+    <% Purchase.where(:user_id => @user.id).each do |u| %>
+      <%= link_to Book.find(u.book_id).name, Book.find(u.book_id) %> <%= link_to Bookstore.find(u.bookstore_id).name, Bookstore.find(u.bookstore_id) %> $<%= u.price %><br>
+    <% end %>
+  </p>
