@@ -31,7 +31,7 @@ class BookstoreInventoriesController < ApplicationController
 
     respond_to do |format|
       if @bookstore_inventory.save
-        format.html { redirect_to @bookstore_inventory, notice: 'Bookstore inventory was successfully created.'}
+        format.html { redirect_to @bookstore_inventory, notice: 'Bookstore inventory was successfully created.' }
         format.json { render :show, status: :created, location: @bookstore_inventory }
       else
         format.html { render :new }
