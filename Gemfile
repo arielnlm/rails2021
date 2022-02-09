@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'bootstrap-sass', '3.4.1'
 gem 'rails',      '6.1.0'  #Rails 
 gem 'puma',       '5.0.4'  #Web server
 gem 'sass-rails', '6.0.0'  #Sass-CSS
@@ -8,6 +9,13 @@ gem 'webpacker',  '4.2.2'  #Angular Vue support
 gem 'turbolinks', '5.2.1'  #Realtime apps
 gem 'jbuilder',   '2.10.0' #Gerneriše JSON
 gem 'bootsnap',   '1.4.6', require: false
+gem 'bcrypt',     '3.1.13'
+gem 'faker',      '2.1.2'
+gem 'simple_form','5.1.0'
+gem 'ratyrate'
+gem 'paperclip',   '4.2.1'
+gem 'will_paginate',           '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'   #Mala baza za interni razvoj
